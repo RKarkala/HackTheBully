@@ -7,7 +7,11 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def hello():
-    message = request.form["message"]
+    message = ""
+    if request.method == 'GET':
+        message = request.args.get('message')
+    else:
+        message = request.form["message"]
     print(message)
     input = {
         "document": message
