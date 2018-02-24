@@ -16,7 +16,9 @@ with open('bully.tsv', 'w', encoding='utf-8') as f:
             except:
                 average_rating += 0.0
         average_rating /= 3
-        if average_rating != 0:
+        if average_rating >= 3.5:
+            average_rating = 2
+        elif average_rating > 0:
             average_rating = 1
         else:
             average_rating = 0

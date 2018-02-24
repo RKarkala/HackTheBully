@@ -60,18 +60,18 @@ cm = confusion_matrix(y_test, y_pred)
 
 print(classification_report(y_test, y_pred))
 
-joblib.dump(classifier, "classifier.pkl")
-joblib.dump(cv, "cv.pkl")
-joblib.dump(sc, "sc.pkl")
+joblib.dump(classifier, "classifier1.pkl")
+joblib.dump(cv, "cv1.pkl")
+joblib.dump(sc, "sc1.pkl")
 
 # Test New Data
 # Importing the dataset
-dataset = pd.read_csv('test.tsv', delimiter='\t', quoting=3)
-corpus = ["You are stupid"]
+
+corpus = ["I fucking hate food"]
 
 X = cv.transform(corpus).toarray()
 X = sc.transform(X)
-pred = classifier.predict(X)
+pred = classifier.predict_proba(X)
 input = {
         "document": corpus[0]
     }
