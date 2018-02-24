@@ -37,16 +37,16 @@ def hello():
     algo = client.algo('nlp/SentimentAnalysis/1.0.4')
     sentiment = algo.pipe(input).__getattribute__("result")[0]["sentiment"]
     print(str(pred) + " " + str(sentiment))
-    expected_value = pred[0][1] + pred[0][2] * 2;
-    expected_value += sentiment/-2
-    print(expected_value)
-    expected_value = round(expected_value)
-    print(expected_value)
-    if expected_value >= 2:
+    if pred[0][2] > .4:
         return "2"
-    elif expected_value >= 1:
+    elif pred[0][2] > .25 and sentiment < -.4:
+        return "2"
+    elif pred[0][1] > .4:
         return "1"
-    return "0"
+    elif pred[0][1] > .25 and sentiment < -.4:
+        return "1"
+    else:
+        return "0"
 
 
 if __name__ == "__main__":

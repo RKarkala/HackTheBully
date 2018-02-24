@@ -47,10 +47,8 @@ X_test = sc.transform(X_test)
 
 # Fitting Classifier to the Training set
 from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state=0)
+classifier = LogisticRegression(random_state=0, C=1, tol=.0001)
 classifier.fit(X_train, y_train)
-
-
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
 
@@ -64,10 +62,15 @@ joblib.dump(classifier, "classifier1.pkl")
 joblib.dump(cv, "cv1.pkl")
 joblib.dump(sc, "sc1.pkl")
 
+cv = joblib.load("cv1.pkl")
+sc = joblib.load("sc1.pkl")
+classifier = joblib.load("classifier1.pkl")
+
+
 # Test New Data
 # Importing the dataset
 
-corpus = ["I fucking hate food"]
+corpus = [""]
 
 X = cv.transform(corpus).toarray()
 X = sc.transform(X)
