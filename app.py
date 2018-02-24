@@ -2,10 +2,6 @@ import Algorithmia
 from flask import Flask
 from flask import request
 from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.preprocessing import StandardScaler
-import pickle
 app = Flask(__name__)
 
 
