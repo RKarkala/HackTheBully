@@ -1,3 +1,2 @@
 # HackTheBully
-Username: jdoe17107
-Password: hackthebully2018
+API for detecting bullying through sentiment analysis.
